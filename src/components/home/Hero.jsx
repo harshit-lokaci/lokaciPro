@@ -38,7 +38,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative flex items-center justify-center min-h-screen overflow-hidden"
+      className="relative flex items-center justify-center min-h-[calc(100vh-8rem-0rem)] overflow-hidden"
     >
       {/* Background */}
       <motion.div
@@ -55,7 +55,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30 z-10"></div>
 
       {/* Content */}
-      <div className="relative z-20 text-center text-white max-w-4xl w-full px-4 flex flex-col items-center">
+      <div className="relative z-20 text-center text-white max-w-5xl w-full px-4 flex flex-col items-center">
         <motion.h1
           className="text-[clamp(2.5rem,6vw,5rem)] font-extrabold mb-6 tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]"
           variants={headingVariants}

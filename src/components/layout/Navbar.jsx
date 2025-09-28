@@ -16,7 +16,7 @@ const Navbar = ({ authCtx }) => {
     { label: "About", href: "/about-us" },
     { label: "Services", href: "/services" },
     { label: "Gallery", href: "/gallery" },
-    { label: "Contact", href: "/contact" },
+    { label: "Contact", href: "/contact-us" },
   ];
 
   return (

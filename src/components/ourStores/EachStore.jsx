@@ -1,86 +1,117 @@
-import React, { useRef } from "react";
-import styles from "./EachStore.module.css";
-import { FiPhoneCall, FiMapPin } from "react-icons/fi";
+import { useRef } from "react";
+import {
+	FiPhoneCall,
+	FiMapPin,
+	FiChevronLeft,
+	FiChevronRight,
+} from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 const EachStore = ({ name, address, phone, whatsapp, images }) => {
-  const sliderRef = useRef(null);
+	const sliderRef = useRef(null);
 
-  const scroll = (direction) => {
-    if (sliderRef.current) {
-      const scrollAmount = sliderRef.current.clientWidth;
-      sliderRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
+	const scroll = (direction) => {
+		if (sliderRef.current) {
+			const scrollAmount = sliderRef.current.clientWidth;
+			sliderRef.current.scrollBy({
+				left: direction === "left" ? -scrollAmount : scrollAmount,
+				behavior: "smooth",
+			});
+		}
+	};
 
-  return (
-    <div className={styles.card}>
-      {/* Image Slider */}
-      <div className={styles.sliderWrapper}>
-        <button
-          className={`${styles.chevron} ${styles.left}`}
-          onClick={() => scroll("left")}
-        >
-          <FiChevronLeft size={22} />
-        </button>
+	return (
+		<div className="bg-white rounded-xl overflow-hidden shadow-md flex flex-col transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg">
+			{/* Image Slider */}
+			<div className="relative">
+				<button
+					className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/50 text-white p-1.5 rounded-full flex items-center justify-center z-10 hover:bg-black/70"
+					onClick={() => scroll("left")}
+				>
+					<FiChevronLeft size={22} />
+				</button>
 
-        <div ref={sliderRef} className={styles.imageSlider}>
-          {images.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={`${name} slide ${index + 1}`}
-              className={styles.image}
-            />
-          ))}
-        </div>
+				<div
+					ref={sliderRef}
+					className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none"
+				>
+					{images.map((image, index) => (
+						<img
+							key={index}
+							src={image}
+							alt={`${name} slide ${index + 1}`}
+							className="w-full h-60 sm:h-56 lg:h-64 object-cover flex-shrink-0 snap-start transition-transform duration-300 ease-in-out hover:scale-105"
+						/>
+					))}
+				</div>
 
-        <button
-          className={`${styles.chevron} ${styles.right}`}
-          onClick={() => scroll("right")}
-        >
-          <FiChevronRight size={22} />
-        </button>
-      </div>
+				<button
+					className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/50 text-white p-1.5 rounded-full flex items-center justify-center z-10 hover:bg-black/70"
+					onClick={() => scroll("right")}
+				>
+					<FiChevronRight size={22} />
+				</button>
+			</div>
 
-      {/* Store Details */}
-      <div className={styles.details}>
-        <div>
-          <h2 className={styles.name}>{name}</h2>
-          <p className={styles.address}>{address}</p>
-        </div>
+			{/* Store Details */}
+			<div className="p-4 flex flex-col flex-1 justify-between">
+				<div>
+					<h2 className="text-gray-900 font-bold text-lg lg:text-xl mb-1">
+						{name}
+					</h2>
+					<p className="text-gray-600 text-sm lg:text-base leading-relaxed">
+						{address}
+					</p>
+				</div>
 
-        {/* Action Buttons */}
-        <div className={styles.actions}>
-          <a href={`tel:${phone}`} className={styles.phoneButton}>
-            <FiPhoneCall size={18} /> Call
-          </a>
-          <a
-            href={`https://wa.me/${whatsapp.replace(/[^0-9]/g, "")}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.whatsappButton}
-          >
-            <FaWhatsapp size={18} /> WhatsApp
-          </a>
-          <a
-            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-              address
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.directionButton}
-          >
-            <FiMapPin size={18} /> Directions
-          </a>
-        </div>
-      </div>
-    </div>
-  );
+				{/* Action Buttons */}
+				{/* Action Buttons */}
+				<div className="flex flex-col sm:grid sm:grid-cols-2 lg:flex lg:flex-row gap-3 mt-3">
+					<a
+						href={`tel:${phone}`}
+						className="w-full flex items-center justify-center gap-2 
+               px-2 py-2 text-xs sm:text-sm md:text-base lg:text-sm xl:text-base 
+               font-semibold text-black bg-white border border-black rounded-md 
+               transition-transform duration-200 ease-in-out 
+               hover:bg-black hover:text-white hover:-translate-y-0.5 hover:shadow-lg"
+					>
+						<FiPhoneCall size={18} /> Call
+					</a>
+
+					<a
+						href={`https://wa.me/${whatsapp.replace(
+							/[^0-9]/g,
+							""
+						)}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="w-full flex items-center justify-center gap-2 
+               px-2 py-2 text-xs sm:text-sm md:text-base lg:text-sm xl:text-base 
+               font-semibold text-black bg-white border border-black rounded-md 
+               transition-transform duration-200 ease-in-out 
+               hover:bg-black hover:text-white hover:-translate-y-0.5 hover:shadow-lg"
+					>
+						<FaWhatsapp size={18} /> WhatsApp
+					</a>
+
+					<a
+						href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+							address
+						)}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						className="w-full flex items-center justify-center gap-2 
+               px-2 py-2 text-xs sm:text-sm md:text-base lg:text-sm xl:text-base 
+               font-semibold text-black bg-white border border-black rounded-md 
+               transition-transform duration-200 ease-in-out 
+               hover:bg-black hover:text-white hover:-translate-y-0.5 hover:shadow-lg"
+					>
+						<FiMapPin size={18} /> Directions
+					</a>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default EachStore;

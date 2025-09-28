@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import EachStore from "../../Components/OurLocations/EachStore";
-import styles from "./OurStores.module.css";
+// import EachStore from "../components/OurLocations/EachStore";
 import { FaStore } from "react-icons/fa";
+import EachStore from "../components/ourStores/EachStore.jsx";
 
 const stores = [
 	{
@@ -37,7 +37,7 @@ const stores = [
 		id: 3,
 		name: "Lokaci - The Salon Company",
 		address:
-			"Shop No. 101, Eldeco Amantran, (Near Badami Restaurant), Sector - 119, Noida, 201307  ",
+			"Shop No. 101, Eldeco Amantran, (Near Badami Restaurant), Sector - 119, Noida, 201307",
 		phone: "+91 876-632-1368",
 		whatsapp: "+91 876-632-1368",
 		images: [
@@ -66,17 +66,24 @@ const OurStores = () => {
 	}, []);
 
 	return (
-		<div className={styles.container}>
+		<div className="w-full text-gray-900 m-0 p-0">
 			{/* Page Header */}
-			<header className={styles.header}>
-				<h1 className={styles.heading}><FaStore/> Our Salon Stores</h1>
-				<p className={styles.description}>
+			<header className="text-center px-5 pt-10 pb-5">
+				<h1 className="flex justify-center items-center gap-2 text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3">
+					Our Salon Stores
+				</h1>
+				<h1 className="flex justify-center items-center gap-2 text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+					Where Style Comes Alive
+				</h1>
+				<p className="text-gray-500 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
 					Explore all our salon locations and find the nearest store.
 					Call or WhatsApp us directly to book an appointment or get
 					more details.
 				</p>
 			</header>
-			<div className={styles.storesWrapper}>
+
+			{/* Stores Grid */}
+			<div className="px-6 lg:px-8 xl:px-10 py-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
 				{stores.map((store) => (
 					<EachStore key={store.id} {...store} />
 				))}

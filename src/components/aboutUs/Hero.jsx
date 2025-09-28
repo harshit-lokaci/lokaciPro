@@ -186,14 +186,6 @@ const Hero = ({ heroRef, y, opacity, data }) => {
             </motion.div>
           ))}
         </motion.div>
-
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-3xl text-[#212529]"
-        >
-          <FaChevronDown />
-        </motion.div>
       </div>
     </motion.section>
   );

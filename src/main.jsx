@@ -4,20 +4,20 @@ import "./index.css";
 import App from "./App.jsx";
 // import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router";
-// import { AuthContextProvider } from "./store/authContext.js";
-// import { TenantContextProvider } from "./store/tenantContext.js";
-// import ScrollToTop from "./helper/scrollToTop.js";
+import { AuthContextProvider } from "./store/authContext.jsx";
+import { TenantContextProvider } from "./store/tenantContext.jsx";
+import ScrollToTop from "./helper/scrollToTop.js";
 // import "react-toastify/dist/ReactToastify.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      {/* <ScrollToTop />
+      <ScrollToTop />
       <TenantContextProvider>
-        <AuthContextProvider> */}
+        <AuthContextProvider>
           <App />
-        {/* </AuthContextProvider>
-      </TenantContextProvider> */}
+        </AuthContextProvider>
+      </TenantContextProvider>
     </BrowserRouter>
   </StrictMode>
 );

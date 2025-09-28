@@ -108,7 +108,7 @@ const GetInTouch = () => {
             style={{ color: data.branding.primaryColor }}
             variants={itemVariants}
           >
-            Contact Us
+            Let’s Connect
           </motion.h2>
           <motion.p
             className="text-lg text-gray-600 max-w-xl mx-auto"

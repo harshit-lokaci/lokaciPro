@@ -8,7 +8,7 @@ import Footer from "../components/layout/Footer";
 import PageHeading from "../components/layout/PageHeading";
 
 
-const Contact = () => {
+const ContactUs = () => {
   return (
     <>
       <PageHeading
@@ -48,4 +48,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactUs;

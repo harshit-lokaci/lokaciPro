@@ -42,7 +42,7 @@ const About = () => {
               className="text-4xl font-extrabold mb-6 text-black leading-tight"
               variants={textVariants}
             >
-              About Our Salon
+              Our World of Beauty
             </motion.h2>
 
             <motion.p
