@@ -21,7 +21,7 @@ const Navbar = ({ authCtx }) => {
 
   return (
     <nav className="fixed w-full top-0 z-50 bg-white/60 backdrop-blur-md shadow-md">
-      <div className="max-w-[1280px] mx-auto px-4">
+      <div className="max-w-full mx-auto px-40">
         <div className="flex justify-between items-center h-[8svh]">
           {/* Logo */}
           <Link to="/" className="text-3xl font-bold tracking-tight">

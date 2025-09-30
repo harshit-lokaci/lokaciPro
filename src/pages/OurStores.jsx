@@ -1,7 +1,7 @@
-import { useEffect } from "react";
-// import EachStore from "../components/OurLocations/EachStore";
-import { FaStore } from "react-icons/fa";
+import { useState, useEffect, useContext } from "react";
 import EachStore from "../components/ourStores/EachStore.jsx";
+import TenantContext from "../store/tenantContext";
+import { BASE_URL_API } from "../constants.js";
 
 const stores = [
 	{
@@ -51,6 +51,41 @@ const stores = [
 ];
 
 const OurStores = () => {
+	const { tenantData: { response: { vendorIdentifier } = {} } = {} } = useContext(TenantContext);
+
+	const [apiStores, setStores] = useState([]);
+
+  // Fetch stores based on vendorIdentifier
+  useEffect(() => {
+    const fetchStores = async () => {
+      if (!vendorIdentifier) return; // null-safe check
+
+      try {
+        const res = await fetch(BASE_URL_API + "/getStores", {
+          method: "POST",
+          body: JSON.stringify({ vendorIdentifier }),
+        });
+
+        if (!res.ok) {
+          console.error("Failed to fetch stores");
+          return;
+        }
+
+        const data = await res.json();
+
+        if (data?.status === "success") {
+          setStores(data.response || []);
+        } else {
+          setStores([]);
+        }
+      } catch (err) {
+        console.error("Error fetching stores:", err);
+      }
+    };
+
+    fetchStores();
+  }, [vendorIdentifier]); // runs whenever vendorIdentifier changes
+
 	useEffect(() => {
 		const metaThemeColor = document.querySelector(
 			"meta[name='theme-color']"
@@ -83,7 +118,7 @@ const OurStores = () => {
 			</header>
 
 			{/* Stores Grid */}
-			<div className="px-6 lg:px-8 xl:px-10 py-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+			<div className="px-6 lg:px-8 xl:px-10 py-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 max-w-[1400px] mx-auto">
 				{stores.map((store) => (
 					<EachStore key={store.id} {...store} />
 				))}

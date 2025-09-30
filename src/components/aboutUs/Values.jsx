@@ -103,9 +103,79 @@
 // export default Values;
 
 
+// import { motion } from "framer-motion";
+
+// const Values = ({ data, staggerContainer, staggerItem }) => {
+//   return (
+//     <section className="py-16 px-4 sm:px-10 lg:px-40 relative bg-gray-50">
+//       <div className="container mx-auto">
+//         <motion.h2
+//           initial={{ opacity: 0, y: 50 }}
+//           whileInView={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.8 }}
+//           viewport={{ once: true }}
+//           className="text-center text-5xl mb-16 text-[#212529] font-bold"
+//         >
+//           {data.heading}
+//         </motion.h2>
+        
+//         <motion.div
+//           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+//           variants={staggerContainer}
+//           initial="hidden"
+//           whileInView="show"
+//           viewport={{ once: true, amount: 0.2 }}
+//         >
+//           {data.cards.map((card, idx) => (
+//             <motion.div
+//               key={idx}
+//               className="relative p-10 rounded-2xl text-center border border-[#e9ecef] overflow-hidden bg-white/90 shadow-[0_4px_15px_rgba(0,0,0,0.05)] group"
+//               variants={staggerItem}
+//               whileHover={{ y: -10, scale: 1.02 }}
+//             >
+//               <div className="absolute -top-12 -left-12 w-24 h-24 bg-[#164374] rounded-full filter blur-2xl opacity-10 group-hover:scale-[3] transition-transform duration-500 ease-in-out"></div>
+              
+//               <motion.div className="text-5xl text-[#164374] mb-6 relative z-10">
+//                 {card.icon}
+//               </motion.div>
+//               <h3 className="text-2xl font-semibold mb-4 relative z-10 text-[#212529]">{card.title}</h3>
+//               <p className="leading-relaxed text-[#212529]/90 relative z-10">{card.desc}</p>
+//             </motion.div>
+//           ))}
+//         </motion.div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Values;
+
 import { motion } from "framer-motion";
 
+const defaultValuesData = {
+  heading: "Our Core Values",
+  cards: [
+    {
+      title: "Excellence",
+      desc: "We strive for perfection in every service we provide, ensuring the highest quality experience.",
+      icon: "💎"
+    },
+    {
+      title: "Integrity",
+      desc: "Our team is honest, transparent, and dedicated to doing the right thing for every client.",
+      icon: "🛡️"
+    },
+    {
+      title: "Innovation",
+      desc: "We constantly update our techniques and products to bring the latest trends and best results.",
+      icon: "🚀"
+    }
+  ]
+};
+
 const Values = ({ data, staggerContainer, staggerItem }) => {
+  const valuesData = data || defaultValuesData;
+
   return (
     <section className="py-16 px-4 sm:px-10 lg:px-40 relative bg-gray-50">
       <div className="container mx-auto">
@@ -116,9 +186,9 @@ const Values = ({ data, staggerContainer, staggerItem }) => {
           viewport={{ once: true }}
           className="text-center text-5xl mb-16 text-[#212529] font-bold"
         >
-          {data.heading}
+          {valuesData.heading}
         </motion.h2>
-        
+
         <motion.div
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={staggerContainer}
@@ -126,7 +196,7 @@ const Values = ({ data, staggerContainer, staggerItem }) => {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
         >
-          {data.cards.map((card, idx) => (
+          {valuesData.cards.map((card, idx) => (
             <motion.div
               key={idx}
               className="relative p-10 rounded-2xl text-center border border-[#e9ecef] overflow-hidden bg-white/90 shadow-[0_4px_15px_rgba(0,0,0,0.05)] group"
@@ -134,11 +204,11 @@ const Values = ({ data, staggerContainer, staggerItem }) => {
               whileHover={{ y: -10, scale: 1.02 }}
             >
               <div className="absolute -top-12 -left-12 w-24 h-24 bg-[#164374] rounded-full filter blur-2xl opacity-10 group-hover:scale-[3] transition-transform duration-500 ease-in-out"></div>
-              
-              <motion.div className="text-5xl text-[#164374] mb-6 relative z-10">
-                {card.icon}
-              </motion.div>
-              <h3 className="text-2xl font-semibold mb-4 relative z-10 text-[#212529]">{card.title}</h3>
+
+              <motion.div className="text-5xl mb-6 relative z-10">{card.icon}</motion.div>
+              <h3 className="text-2xl font-semibold mb-4 relative z-10 text-[#212529]">
+                {card.title}
+              </h3>
               <p className="leading-relaxed text-[#212529]/90 relative z-10">{card.desc}</p>
             </motion.div>
           ))}

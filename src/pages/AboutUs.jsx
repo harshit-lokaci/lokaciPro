@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
-// React Icons imports (अब सिर्फ़ डेटा के लिए)
+// React Icons imports
 import { FaStar, FaHeart, FaAward, FaMagic, FaGem, FaLeaf, FaCrown } from "react-icons/fa";
 import { MdSpa, MdStars } from "react-icons/md";
 
@@ -17,7 +17,7 @@ import Footer from "../components/layout/Footer.jsx";
 // Data remains the same
 const aboutData = {
 	hero: {
-		title: "About Us",
+		title: "The Art of Our Salon",
 		subtitle: "Where beauty meets artistry and dreams come alive",
 		stats: [
 			{ number: "10K+", label: "Happy Clients" },
@@ -109,7 +109,7 @@ const AboutUs = () => {
 
   return (
     <div ref={containerRef} className="bg-white text-[#212529] overflow-x-hidden relative">
-      <PageHeading heading={"About Our Salon"} paragraph={"We are dedicated to making you look and feel amazing. Our team combines expertise and creativity to provide top-notch beauty and wellness services tailored just for you."}/>
+      <PageHeading heading={"The Art of Our Salon"} paragraph={"We are dedicated to making you look and feel amazing. Our team combines expertise and creativity to provide top-notch beauty and wellness services tailored just for you."}/>
       
       {/* Animated Background Elements */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0">

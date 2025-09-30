@@ -43,6 +43,30 @@ button {
 .scrollbar-none::-webkit-scrollbar {
   display: none;
 }
+/* Active link text */
 .active {
-  color: blue;
+  color: #000000;
+  /* Black text */
+  font-weight: 600;
+  /* Semi-bold */
+}
+
+/* Optional: add underline for active link */
+.active::after {
+  content: "";
+  display: block;
+  height: 2px;
+  /* Thickness of underline */
+  width: 100%;
+  background-color: #000;
+  /* Underline color */
+  margin-top: 4px;
+  /* Space between text and underline */
+  transition: width 0.3s ease;
+}
+
+/* Optional: hover effect for inactive links */
+.nav-link:hover::after {
+  width: 100%;
+  /* Slide underline on hover */
 }

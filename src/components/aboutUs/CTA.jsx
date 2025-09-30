@@ -67,11 +67,33 @@
 
 // export default CTA;
 
-
 import { motion } from "framer-motion";
 import { FaCalendarAlt, FaPhone, FaMapMarkerAlt, FaStar } from "react-icons/fa";
 
-const Cta = () => {
+const iconMap = {
+  FaCalendarAlt: FaCalendarAlt,
+  FaPhone: FaPhone,
+  FaMapMarkerAlt: FaMapMarkerAlt,
+  FaStar: FaStar,
+};
+
+const defaultCtaData = {
+  heading: "Ready for Your Transformation?",
+  subtext: "Join thousands of satisfied clients who've discovered their most beautiful selves at Glamour Touch Salon.",
+  buttons: [
+    { text: "Book Your Appointment", icon: "FaCalendarAlt", type: "primary" },
+    { text: "Call Us Now", icon: "FaPhone", type: "secondary" }
+  ],
+  info: [
+    { icon: "FaMapMarkerAlt", label: "Address", value: "123 Salon Street, Noida, India" },
+    { icon: "FaPhone", label: "Phone", value: "+1 234 567 890" },
+    { icon: "FaStar", label: "Rating", value: "4.9/5" }
+  ]
+};
+
+const Cta = ({ data }) => {
+  const ctaData = data || defaultCtaData;
+
   return (
     <section className="py-8 px-4 sm:px-8 lg:px-32 text-center">
       <div className="container mx-auto">
@@ -83,46 +105,45 @@ const Cta = () => {
           className="bg-white/80 p-8 sm:p-16 rounded-3xl border border-[#e9ecef] shadow-[0_4px_15px_rgba(0,0,0,0.05)]"
         >
           <motion.h2 className="text-4xl sm:text-5xl font-bold text-[#212529] mb-6">
-            Ready for Your Transformation?
+            {ctaData.heading}
           </motion.h2>
           
           <p className="max-w-xl mx-auto mb-8 text-[#6c757d]">
-            Join thousands of satisfied clients who've discovered their most beautiful selves at Glamour Touch Salon.
+            {ctaData.subtext}
           </p>
           
           <div className="flex justify-center gap-6 flex-col sm:flex-row items-center">
-            <motion.button
-              className="w-full sm:w-auto py-4 px-8 rounded-full border-none text-base font-semibold cursor-pointer flex items-center justify-center gap-2 transition-all duration-300 ease-in-out bg-[#164374] text-white hover:bg-[#0056b3]"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaCalendarAlt />
-              Book Your Appointment
-            </motion.button>
-            
-            <motion.button
-              className="w-full sm:w-auto py-4 px-8 rounded-full text-base font-semibold cursor-pointer flex items-center justify-center gap-2 transition-all duration-300 ease-in-out bg-transparent text-[#164374] border-2 border-[#164374] hover:bg-[#164374] hover:text-white"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <FaPhone />
-              Call Us Now
-            </motion.button>
+            {ctaData.buttons.map((btn, idx) => {
+              const IconComponent = iconMap[btn.icon] || FaStar;
+              const isPrimary = btn.type === "primary";
+              return (
+                <motion.button
+                  key={idx}
+                  className={`w-full sm:w-auto py-4 px-8 rounded-full text-base font-semibold cursor-pointer flex items-center justify-center gap-2 transition-all duration-300 ease-in-out ${
+                    isPrimary
+                      ? "bg-[#164374] text-white hover:bg-[#0056b3]"
+                      : "bg-transparent text-[#164374] border-2 border-[#164374] hover:bg-[#164374] hover:text-white"
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <IconComponent />
+                  {btn.text}
+                </motion.button>
+              );
+            })}
           </div>
           
           <div className="mt-10 flex justify-center gap-4 sm:gap-8 flex-wrap">
-            <div className="flex items-center gap-2 text-[#212529]">
-              <FaMapMarkerAlt />
-              Address...
-            </div>
-            <div className="flex items-center gap-2 text-[#212529]">
-              <FaPhone />
-              (555) 123-456-789
-            </div>
-            <div className="flex items-center gap-2 text-[#212529]">
-              <FaStar />
-              4.9/5 Rating
-            </div>
+            {ctaData.info.map((item, idx) => {
+              const IconComponent = iconMap[item.icon] || FaStar;
+              return (
+                <div key={idx} className="flex items-center gap-2 text-[#212529]">
+                  <IconComponent />
+                  {item.value || item.label}
+                </div>
+              );
+            })}
           </div>
         </motion.div>
       </div>

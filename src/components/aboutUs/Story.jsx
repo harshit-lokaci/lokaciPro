@@ -87,10 +87,78 @@
 // export default Story;
 
 
+// import { motion } from "framer-motion";
+// import { FaAward } from "react-icons/fa";
+
+// const Story = ({ data, staggerContainer, staggerItem }) => {
+//   return (
+//     <section className="py-24 px-4 sm:px-12 relative z-10 bg-white">
+//       <div className="container mx-auto">
+//         <motion.div
+//           className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center lg:px-16"
+//           variants={staggerContainer}
+//           initial="hidden"
+//           whileInView="show"
+//           viewport={{ once: true, amount: 0.3 }}
+//         >
+//           <motion.div variants={staggerItem} className="lg:pr-8 lg:order-1 order-2">
+//             <h2 className="text-5xl font-extrabold mb-6 text-[#212529]">
+//               {data.heading}
+//             </h2>
+//             <div className="space-y-4 text-[#212529]/90">
+//               <p className="leading-loose">{data.text1}</p>
+//               <p className="leading-loose">{data.text2}</p>
+//             </div>
+            
+//             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+//               {data.achievements.map((achievement, idx) => (
+//                 <motion.div
+//                   key={idx}
+//                   className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-[#e9ecef]"
+//                   whileHover={{ scale: 1.02 }}
+//                 >
+//                   <FaAward className="text-[#164374] text-xl" />
+//                   <span className="text-sm">{achievement}</span>
+//                 </motion.div>
+//               ))}
+//             </div>
+//           </motion.div>
+
+//           <motion.div
+//             variants={staggerItem}
+//             className="relative rounded-2xl overflow-hidden shadow-2xl lg:order-2 order-1"
+//           >
+//             <div className="relative">
+//               <img
+//                 src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=800&fit=crop"
+//                 alt="Salon Interior"
+//                 className="w-full h-full object-cover block"
+//               />
+//               <div className="absolute inset-0 bg-gradient-to-t from-[#164374]/10 to-[#2c3e50]/10"></div>
+//             </div>
+//           </motion.div>
+//         </motion.div>
+//       </div>
+//     </section>
+//   );
+// };
+
+// export default Story;
+
 import { motion } from "framer-motion";
 import { FaAward } from "react-icons/fa";
 
+const defaultStoryData = {
+  heading: "Our Story",
+  text1: "Founded with a passion for beauty, our salon has been transforming lives with style and sophistication.",
+  text2: "We believe in providing top-notch services that combine creativity, expertise, and personalized care for every client.",
+  achievements: ["500+ Happy Clients", "10+ Years Experience", "25 Awards Won", "Professional Team"],
+  imageUrl: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=800&fit=crop"
+};
+
 const Story = ({ data, staggerContainer, staggerItem }) => {
+  const storyData = data || defaultStoryData;
+
   return (
     <section className="py-24 px-4 sm:px-12 relative z-10 bg-white">
       <div className="container mx-auto">
@@ -101,17 +169,19 @@ const Story = ({ data, staggerContainer, staggerItem }) => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
         >
+          {/* Text Column */}
           <motion.div variants={staggerItem} className="lg:pr-8 lg:order-1 order-2">
             <h2 className="text-5xl font-extrabold mb-6 text-[#212529]">
-              {data.heading}
+              {storyData.heading}
             </h2>
             <div className="space-y-4 text-[#212529]/90">
-              <p className="leading-loose">{data.text1}</p>
-              <p className="leading-loose">{data.text2}</p>
+              <p className="leading-loose">{storyData.text1}</p>
+              <p className="leading-loose">{storyData.text2}</p>
             </div>
-            
+
+            {/* Achievements */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-              {data.achievements.map((achievement, idx) => (
+              {storyData.achievements.map((achievement, idx) => (
                 <motion.div
                   key={idx}
                   className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-[#e9ecef]"
@@ -124,13 +194,14 @@ const Story = ({ data, staggerContainer, staggerItem }) => {
             </div>
           </motion.div>
 
+          {/* Image Column */}
           <motion.div
             variants={staggerItem}
             className="relative rounded-2xl overflow-hidden shadow-2xl lg:order-2 order-1"
           >
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=800&fit=crop"
+                src={storyData.imageUrl}
                 alt="Salon Interior"
                 className="w-full h-full object-cover block"
               />

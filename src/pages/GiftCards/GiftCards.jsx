@@ -5,63 +5,101 @@ import { FiShoppingCart, FiGift } from "react-icons/fi";
 import { BASE_URL_API } from "../../constants.js";
 import AuthContext from "../../store/authContext.jsx";
 import PageHeading from "../../components/layout/PageHeading.jsx";
+import TenantContext from "../../store/tenantContext";
 
 const GiftCards = () => {
-    const authCtx = useContext(AuthContext);
-    const [allCards, setAllCards] = useState([]);
+	const authCtx = useContext(AuthContext);
+	const [allCards, setAllCards] = useState([]);
+	const { tenantData: { response: { storeIdentifier } = {} } = {} } =
+		useContext(TenantContext);
 
-    const getAllCards = async () => {
-        try {
-            const res = await fetch(BASE_URL_API + "/getAllCards", {
-                method: "POST",
-                body: JSON.stringify({ token: authCtx.token }),
-            });
+	// const getAllCards = async () => {
+	//     try {
+	//         const res = await fetch(BASE_URL_API + "/getAllCards", {
+	//             method: "POST",
+	//             body: JSON.stringify({ token: authCtx.token, storeIdentifier }),
+	//         });
 
-            if (!res.ok) {
-                console.error("Server Error");
-                return;
-            }
+	//         if (!res.ok) {
+	//             console.error("Server Error");
+	//             return;
+	//         }
 
-            const data = await res.json();
-            if (data?.status === "success") {
-                setAllCards(data?.response);
-            } else if (data?.message === "tokenExpired") {
-                authCtx.logout();
-            } else {
-                setAllCards([]);
-            }
-        } catch (err) {
-            console.error("Fetch error:", err);
-        }
-    };
+	//         const data = await res.json();
+	//         if (data?.status === "success") {
+	//             setAllCards(data?.response);
+	//         } else if (data?.message === "tokenExpired") {
+	//             authCtx.logout();
+	//         } else {
+	//             setAllCards([]);
+	//         }
+	//     } catch (err) {
+	//         console.error("Fetch error:", err);
+	//     }
+	// };
 
-    useEffect(() => {
-        getAllCards();
-    }, []);
+	// useEffect(() => {
+	//     getAllCards();
+	// }, []);
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.15,
-            },
-        },
-    };
+	useEffect(() => {
+		const fetchAllCards = async () => {
+			if (!storeIdentifier) return; // null-safe check
 
-    const cardVariants = {
-        hidden: { opacity: 0, y: 40 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                ease: "easeOut",
-                duration: 0.8,
-            },
-        },
-    };
+			try {
+				const res = await fetch(BASE_URL_API + "/getAllCards", {
+					method: "POST",
+					body: JSON.stringify({
+						token: authCtx.token,
+						storeIdentifier,
+					}),
+				});
 
-    return (
+				if (!res.ok) {
+					console.error("Server Error");
+					return;
+				}
+
+				const data = await res.json();
+
+				if (data?.status === "success") {
+					setAllCards(data?.response || []);
+				} else if (data?.message === "tokenExpired") {
+					authCtx.logout();
+				} else {
+					setAllCards([]);
+				}
+			} catch (err) {
+				console.error("Fetch error:", err);
+			}
+		};
+
+		fetchAllCards();
+	}, [storeIdentifier]); // dependency array ensures it runs when storeIdentifier changes
+
+	const containerVariants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.15,
+			},
+		},
+	};
+
+	const cardVariants = {
+		hidden: { opacity: 0, y: 40 },
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				ease: "easeOut",
+				duration: 0.8,
+			},
+		},
+	};
+
+	return (
 		// .pageWrapper
 		<div className="min-h-screen bg-[#f8fafc] text-[#1e293b]">
 			{/* Hero Section */}

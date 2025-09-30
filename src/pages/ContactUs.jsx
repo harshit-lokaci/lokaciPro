@@ -18,7 +18,7 @@ const ContactUs = () => {
         }
       />
       <motion.div
-        className="font-[Poppins] bg-white text-gray-900 leading-relaxed"
+        className="bg-white text-gray-900 leading-relaxed"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
