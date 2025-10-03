@@ -1,3 +1,4 @@
+//src/components/layout/Navbar.jsx
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
@@ -21,7 +22,7 @@ const Navbar = ({ authCtx }) => {
 
   return (
     <nav className="fixed w-full top-0 z-50 bg-white/60 backdrop-blur-md shadow-md">
-      <div className="max-w-full mx-auto px-40">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-[8svh]">
           {/* Logo */}
           <Link to="/" className="text-3xl font-bold tracking-tight">

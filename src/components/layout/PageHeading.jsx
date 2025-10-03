@@ -1,10 +1,11 @@
+//src/components/layout/PageHeading.jsx
 import { motion } from "framer-motion";
 
 const PageHeading = ({ heading, paragraph }) => {
   return (
     <motion.section
       className="
-        bg-gradient-to-br from-[#164374] to-[#306390] 
+        bg-black
         text-white text-center 
         px-8 py-26 pb-40 
         relative overflow-hidden

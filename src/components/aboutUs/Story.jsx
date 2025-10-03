@@ -157,7 +157,8 @@ const defaultStoryData = {
 };
 
 const Story = ({ data, staggerContainer, staggerItem }) => {
-  const storyData = data || defaultStoryData;
+  // const storyData = data || defaultStoryData; // Use provided data or fallback to default
+  const storyData = defaultStoryData;
 
   return (
     <section className="py-24 px-4 sm:px-12 relative z-10 bg-white">

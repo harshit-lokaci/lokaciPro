@@ -38,7 +38,7 @@ const CustomOTPInput = ({ length = 6, onChange }) => {
           onChange={(e) => handleChange(e, i)}
           onKeyDown={(e) => handleKeyDown(e, i)}
           ref={(el) => (inputsRef.current[i] = el)}
-          className="w-12 h-12 text-center text-2xl border-2 border-gray-300 rounded-lg outline-none transition-all duration-200 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-500"
+          className="w-12 h-12 text-center text-2xl border-2 border-gray-300 rounded-lg outline-none transition-all duration-200 focus:border-black-600 focus:ring-2 focus:ring-black-500"
         />
       ))}
     </div>

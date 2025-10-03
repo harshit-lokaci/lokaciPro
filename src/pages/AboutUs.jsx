@@ -110,13 +110,6 @@ const AboutUs = () => {
   return (
     <div ref={containerRef} className="bg-white text-[#212529] overflow-x-hidden relative">
       <PageHeading heading={"The Art of Our Salon"} paragraph={"We are dedicated to making you look and feel amazing. Our team combines expertise and creativity to provide top-notch beauty and wellness services tailored just for you."}/>
-      
-      {/* Animated Background Elements */}
-      <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-0">
-        <div className="absolute top-[10%] left-[5%] w-[150px] h-[150px] bg-[radial-gradient(circle,#164374,transparent_60%)] opacity-10 rounded-full filter blur-[40px] animate-pulse"></div>
-        <div className="absolute bottom-[15%] right-[10%] w-[200px] h-[200px] bg-[radial-gradient(circle,#2c3e50,transparent_60%)] opacity-[0.08] rounded-full filter blur-[50px] animate-bounce"></div>
-        <div className="absolute top-1/2 left-1/2 w-[100px] h-[100px] bg-[radial-gradient(circle,#164374,transparent_60%)] opacity-[0.05] rounded-full filter blur-[30px] animate-ping"></div>
-      </div>
 
       <Hero heroRef={heroRef} y={heroY} opacity={smoothOpacity} data={aboutData.hero} />
       
