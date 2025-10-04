@@ -214,7 +214,7 @@ const Hero = ({ heroRef, y, opacity, data }) => {
   return (
     <motion.section
       ref={heroRef}
-      className="relative h-fit flex items-center justify-center text-center overflow-hidden w-full py-24"
+      className="relative h-fit flex items-center justify-center text-center overflow-hidden w-full py-14"
       style={{ y, opacity }}
     >
       {/* Background */}
@@ -229,7 +229,7 @@ const Hero = ({ heroRef, y, opacity, data }) => {
 
       {/* Content */}
       <div className="relative z-30 w-full flex items-center justify-center flex-col p-4">
-        <motion.h1
+        {/* <motion.h1
           initial={{ opacity: 0, y: 100, scale: 0.5 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1.2, type: "spring", stiffness: 100 }}
@@ -237,7 +237,7 @@ const Hero = ({ heroRef, y, opacity, data }) => {
           style={{ textShadow: "2px 2px 10px rgba(0,0,0,0.1)" }}
         >
           {heroData.title}
-        </motion.h1>
+        </motion.h1> */}
 
         <motion.p
           initial={{ opacity: 0, y: 50 }}
@@ -257,11 +257,11 @@ const Hero = ({ heroRef, y, opacity, data }) => {
           {heroData.stats.map((stat, idx) => (
             <motion.div
               key={idx}
-              className="bg-white/90 p-6 w-[200px] rounded-xl border border-[#e9ecef] backdrop-blur-lg transition-all duration-300 ease-in-out shadow-[0_4px_15px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] text-center"
+              className="bg-white/90 px-6 py-12 w-[250px] rounded-xl border border-[#e9ecef] backdrop-blur-lg transition-all duration-300 ease-in-out shadow-[0_4px_15px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.1)] text-center"
               whileHover={{ scale: 1.05, y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <div className="text-4xl font-bold text-[#164374]">
+              <div className="text-5xl font-bold text-[#164374]">
                 <CounterAnimation
                   end={stat.number.replace(/\D/g, "")}
                   suffix={stat.number.replace(/\d/g, "")}

@@ -35,7 +35,7 @@ const BottomStackNavigator = () => {
       </NavLink>
 
       <NavLink
-        to="/store0002/price-list"
+        to="/price-list"
         className={({ isActive }) =>
           `flex items-center justify-center w-12 h-12 transition-colors ${
             isActive ? "text-blue-500" : "text-gray-500"

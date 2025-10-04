@@ -34,9 +34,9 @@ const PriceList = () => {
 				console.log(result?.response, "dataresponse");
 				setPriceList(result.response || []);
 
-				// Set the first genderIdentifier as active section
+				// Set the first sectionLabel as active section
 				if (result.response?.length > 0) {
-					const firstGender = result.response[0].genderIdentifier;
+					const firstGender = result.response[0].sectionLabel;
 					setActiveSection(firstGender);
 				}
 			}
@@ -50,7 +50,7 @@ const PriceList = () => {
 
 		if (activeSection) {
 			list = list.filter(
-				(item) => item.genderIdentifier === activeSection
+				(item) => item.sectionLabel === activeSection
 			);
 		}
 
@@ -76,8 +76,8 @@ const PriceList = () => {
 		const uniqueIds = [
 			...new Map(
 				priceList.map((item) => [
-					item.genderIdentifier,
-					item.genderIdentifier,
+					item.sectionLabel,
+					item.sectionLabel,
 				])
 			).keys(),
 		];
@@ -107,7 +107,7 @@ const PriceList = () => {
 						className={`text-center px-5 py-2 rounded-full text-sm font-medium cursor-pointer transition-all ${
 							activeSection === item.identifier
 								? "bg-black text-white font-semibold shadow-[0_6px_18px_rgba(200,200,200,0.3)] -translate-y-0.5"
-								: "text-black hover:bg-black/5"
+								: "text-black bg-black/5 hover:bg-black/5"
 						}`}
 						onClick={() => setActiveSection(item.identifier)}
 					>

@@ -109,7 +109,7 @@ const AboutUs = () => {
 
   return (
     <div ref={containerRef} className="bg-white text-[#212529] overflow-x-hidden relative">
-      <PageHeading heading={"The Art of Our Salon"} paragraph={"We are dedicated to making you look and feel amazing. Our team combines expertise and creativity to provide top-notch beauty and wellness services tailored just for you."}/>
+      <PageHeading heading={"The Art of Our Salon"} paragraph={"Where beauty meets artistry and dreams come alive"}/>
 
       <Hero heroRef={heroRef} y={heroY} opacity={smoothOpacity} data={aboutData.hero} />
       

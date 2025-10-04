@@ -47,13 +47,15 @@ const GiftCards = () => {
 			if (!storeIdentifier) return; // null-safe check
 
 			try {
-				const res = await fetch(BASE_URL_API + "/getAllCards", {
+				const res = await fetch(BASE_URL_API + "/getAllMemberships", {
 					method: "POST",
 					body: JSON.stringify({
-						token: authCtx.token,
+						// token: authCtx.token,
 						storeIdentifier,
 					}),
 				});
+
+				console.log(res);
 
 				if (!res.ok) {
 					console.error("Server Error");
@@ -61,6 +63,7 @@ const GiftCards = () => {
 				}
 
 				const data = await res.json();
+				console.log(data);
 
 				if (data?.status === "success") {
 					setAllCards(data?.response || []);
@@ -76,6 +79,8 @@ const GiftCards = () => {
 
 		fetchAllCards();
 	}, [storeIdentifier]); // dependency array ensures it runs when storeIdentifier changes
+
+	console.log("All Cards:", allCards);
 
 	const containerVariants = {
 		hidden: { opacity: 0 },
@@ -133,7 +138,7 @@ const GiftCards = () => {
 			>
 				{allCards?.map((item) => (
 					<motion.div
-						key={item.ID}
+						key={item.membershipIdentifier}
 						className="h-full"
 						variants={cardVariants}
 					>
@@ -153,10 +158,11 @@ const GiftCards = () => {
 							{/* Card Body */}
 							<div className="flex flex-1 flex-col p-4 md:p-5 lg:p-6">
 								<h3 className="text-lg font-semibold">
-									{item.label}
+									{item.membershipName}
 								</h3>
 								<p className="mb-2 text-xs uppercase text-[#64748b]">
-									{item.cardType.replace("_", " ")}
+									{/* {item.cardType.replace("_", " ")} */}
+									{item.cardTypeLabel}
 								</p>
 								<p className="mb-4 flex-grow text-sm text-[#334155]">
 									{item.description}
@@ -164,15 +170,15 @@ const GiftCards = () => {
 
 								<div className="mb-4">
 									<span className="text-lg font-bold text-[#1e40af]">
-										<strong>₹{item.toPay}</strong>
+										<strong>₹{item.membershipPrice}</strong>
 									</span>
 									<small className="block text-[#64748b]">
-										Worth ₹{item.worthOff}
+										Worth ₹{item.membershipWorthOff}
 									</small>
 								</div>
 
 								<Link
-									to={`/buy/cards/${item.cardIdentifier}`}
+									to={`/buy/cards/${item.membershipIdentifier}`}
 									className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#1e40af] p-3 font-semibold text-white no-underline shadow-[0_4px_15px_rgba(30,64,175,0.4)] transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-[0_8px_25px_rgba(30,64,175,0.6)] sm:w-auto md:py-[0.7rem] md:px-4 md:text-sm lg:py-[0.8rem] lg:px-[1.2rem] lg:text-base"
 								>
 									<FiShoppingCart /> Buy Now

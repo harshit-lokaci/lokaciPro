@@ -7,7 +7,7 @@ import {
 } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
-const EachStore = ({ name, address, phone, whatsapp, images }) => {
+const EachStore = ({ storeName, storeAddress, storePhone, images, storeLat, storeLng }) => {
 	const sliderRef = useRef(null);
 
 	const scroll = (direction) => {
@@ -39,7 +39,7 @@ const EachStore = ({ name, address, phone, whatsapp, images }) => {
 						<img
 							key={index}
 							src={image}
-							alt={`${name} slide ${index + 1}`}
+							alt={`${storeName} slide ${index + 1}`}
 							className="w-full h-60 sm:h-56 lg:h-64 object-cover flex-shrink-0 snap-start transition-transform duration-300 ease-in-out hover:scale-105"
 						/>
 					))}
@@ -57,10 +57,10 @@ const EachStore = ({ name, address, phone, whatsapp, images }) => {
 			<div className="p-4 flex flex-col flex-1 justify-between">
 				<div>
 					<h2 className="text-gray-900 font-bold text-lg lg:text-xl mb-1">
-						{name}
+						{storeName}
 					</h2>
 					<p className="text-gray-600 text-sm lg:text-base leading-relaxed">
-						{address}
+						{storeAddress}
 					</p>
 				</div>
 
@@ -68,7 +68,7 @@ const EachStore = ({ name, address, phone, whatsapp, images }) => {
 				{/* Action Buttons */}
 				<div className="flex flex-col sm:grid sm:grid-cols-2 lg:flex lg:flex-row gap-3 mt-3">
 					<a
-						href={`tel:${phone}`}
+						href={`tel:${storePhone}`}
 						className="w-full flex items-center justify-center gap-2 
                px-2 py-2 text-xs sm:text-sm md:text-base lg:text-sm xl:text-base 
                font-semibold text-black bg-white border border-black rounded-md 
@@ -79,7 +79,7 @@ const EachStore = ({ name, address, phone, whatsapp, images }) => {
 					</a>
 
 					<a
-						href={`https://wa.me/${whatsapp.replace(
+						href={`https://wa.me/${storePhone.replace(
 							/[^0-9]/g,
 							""
 						)}`}
@@ -91,13 +91,11 @@ const EachStore = ({ name, address, phone, whatsapp, images }) => {
                transition-transform duration-200 ease-in-out 
                hover:bg-black hover:text-white hover:-translate-y-0.5 hover:shadow-lg"
 					>
-						<FaWhatsapp size={18} /> WhatsApp
+						<FaWhatsapp size={18} /> Whatsapp
 					</a>
 
 					<a
-						href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-							address
-						)}`}
+						href={`https://www.google.com/maps/search/?api=1&query=${storeLat},${storeLng}`}
 						target="_blank"
 						rel="noopener noreferrer"
 						className="w-full flex items-center justify-center gap-2 

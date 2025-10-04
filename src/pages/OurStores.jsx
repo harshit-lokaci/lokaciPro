@@ -3,57 +3,57 @@ import EachStore from "../components/ourStores/EachStore.jsx";
 import TenantContext from "../store/tenantContext";
 import { BASE_URL_API } from "../constants.js";
 
-const stores = [
-	{
-		id: 1,
-		name: "The Salon Company",
-		address: "GT - 08, Sector - 117, Noida, 201307",
-		phone: "+91-880-002-6046",
-		whatsapp: "+1 123-456-7890",
-		images: [
-			"https://lh3.googleusercontent.com/p/AF1QipOgbwz7o_UIxfjHD2r73RlI9nt3J2pada9XjmqP=s1360-w1360-h1020",
-			"https://lh3.googleusercontent.com/p/AF1QipNo8tcv68jMDPJxBPfkNir9wJYCe7H3UOXvssGH=s1360-w1360-h1020",
-			"https://lh3.googleusercontent.com/p/AF1QipNRNsFm2jtroRumyB9haalJj7UsakFr7_42mp6Z=s1360-w1360-h1020",
-			"https://lh3.googleusercontent.com/p/AF1QipNex1qLWCzAyntuJMRIDKBy6JDd6eePywYlSftV=s1360-w1360-h1020",
-			"https://lh3.googleusercontent.com/p/AF1QipM-oenOQhzZn8U2KNgknae6PW-7wbF6tZVhZkXp=s1360-w1360-h1020",
-		],
-	},
-	{
-		id: 2,
-		name: "Lokaci - The Salon Company",
-		address:
-			"Shop No. 101, Eldeco Amantran, (Near Badami Restaurant), Sector - 119, Noida, 201307",
-		phone: "+91 876-632-1368",
-		whatsapp: "+91 876-632-1368",
-		images: [
-			"https://lh3.googleusercontent.com/p/AF1QipNo8tcv68jMDPJxBPfkNir9wJYCe7H3UOXvssGH=s1360-w1360-h1020",
-			"https://lh3.googleusercontent.com/p/AF1QipOAX6t-wDu1uNbEDRH20aHcCPj7q-Z6qB7kk_7Q=s1360-w1360-h1020",
-			"https://lh3.googleusercontent.com/p/AF1QipN0BOJzecoreEOSc1CLOixey7NLN2vKgSzRI9ST=s1360-w1360-h1020",
-			"https://lh3.googleusercontent.com/p/AF1QipMvfX6S-tVJiKrRLQk2YWxNfk18aferJMwb5sTG=s1360-w1360-h1020",
-			"https://lh3.googleusercontent.com/p/AF1QipOhWTgNXSOlCa2l5LmWehZmYN9Mgue92OBaV4RH=s1360-w1360-h1020",
-		],
-	},
-	{
-		id: 3,
-		name: "Lokaci - The Salon Company",
-		address:
-			"Shop No. 101, Eldeco Amantran, (Near Badami Restaurant), Sector - 119, Noida, 201307",
-		phone: "+91 876-632-1368",
-		whatsapp: "+91 876-632-1368",
-		images: [
-			"https://lh3.googleusercontent.com/p/AF1QipNRNsFm2jtroRumyB9haalJj7UsakFr7_42mp6Z=s1360-w1360-h1020",
-			"https://lh3.googleusercontent.com/p/AF1QipOAX6t-wDu1uNbEDRH20aHcCPj7q-Z6qB7kk_7Q=s1360-w1360-h1020",
-			"https://lh3.googleusercontent.com/p/AF1QipN0BOJzecoreEOSc1CLOixey7NLN2vKgSzRI9ST=s1360-w1360-h1020",
-			"https://lh3.googleusercontent.com/p/AF1QipMvfX6S-tVJiKrRLQk2YWxNfk18aferJMwb5sTG=s1360-w1360-h1020",
-			"https://lh3.googleusercontent.com/p/AF1QipOhWTgNXSOlCa2l5LmWehZmYN9Mgue92OBaV4RH=s1360-w1360-h1020",
-		],
-	},
-];
+// const stores = [
+// 	{
+// 		id: 1,
+// 		name: "The Salon Company",
+// 		address: "GT - 08, Sector - 117, Noida, 201307",
+// 		phone: "+91-880-002-6046",
+// 		whatsapp: "+1 123-456-7890",
+// 		images: [
+// 			"https://lh3.googleusercontent.com/p/AF1QipOgbwz7o_UIxfjHD2r73RlI9nt3J2pada9XjmqP=s1360-w1360-h1020",
+// 			"https://lh3.googleusercontent.com/p/AF1QipNo8tcv68jMDPJxBPfkNir9wJYCe7H3UOXvssGH=s1360-w1360-h1020",
+// 			"https://lh3.googleusercontent.com/p/AF1QipNRNsFm2jtroRumyB9haalJj7UsakFr7_42mp6Z=s1360-w1360-h1020",
+// 			"https://lh3.googleusercontent.com/p/AF1QipNex1qLWCzAyntuJMRIDKBy6JDd6eePywYlSftV=s1360-w1360-h1020",
+// 			"https://lh3.googleusercontent.com/p/AF1QipM-oenOQhzZn8U2KNgknae6PW-7wbF6tZVhZkXp=s1360-w1360-h1020",
+// 		],
+// 	},
+// 	{
+// 		id: 2,
+// 		name: "Lokaci - The Salon Company",
+// 		address:
+// 			"Shop No. 101, Eldeco Amantran, (Near Badami Restaurant), Sector - 119, Noida, 201307",
+// 		phone: "+91 876-632-1368",
+// 		whatsapp: "+91 876-632-1368",
+// 		images: [
+// 			"https://lh3.googleusercontent.com/p/AF1QipNo8tcv68jMDPJxBPfkNir9wJYCe7H3UOXvssGH=s1360-w1360-h1020",
+// 			"https://lh3.googleusercontent.com/p/AF1QipOAX6t-wDu1uNbEDRH20aHcCPj7q-Z6qB7kk_7Q=s1360-w1360-h1020",
+// 			"https://lh3.googleusercontent.com/p/AF1QipN0BOJzecoreEOSc1CLOixey7NLN2vKgSzRI9ST=s1360-w1360-h1020",
+// 			"https://lh3.googleusercontent.com/p/AF1QipMvfX6S-tVJiKrRLQk2YWxNfk18aferJMwb5sTG=s1360-w1360-h1020",
+// 			"https://lh3.googleusercontent.com/p/AF1QipOhWTgNXSOlCa2l5LmWehZmYN9Mgue92OBaV4RH=s1360-w1360-h1020",
+// 		],
+// 	},
+// 	{
+// 		id: 3,
+// 		name: "Lokaci - The Salon Company",
+// 		address:
+// 			"Shop No. 101, Eldeco Amantran, (Near Badami Restaurant), Sector - 119, Noida, 201307",
+// 		phone: "+91 876-632-1368",
+// 		whatsapp: "+91 876-632-1368",
+// 		images: [
+// 			"https://lh3.googleusercontent.com/p/AF1QipNRNsFm2jtroRumyB9haalJj7UsakFr7_42mp6Z=s1360-w1360-h1020",
+// 			"https://lh3.googleusercontent.com/p/AF1QipOAX6t-wDu1uNbEDRH20aHcCPj7q-Z6qB7kk_7Q=s1360-w1360-h1020",
+// 			"https://lh3.googleusercontent.com/p/AF1QipN0BOJzecoreEOSc1CLOixey7NLN2vKgSzRI9ST=s1360-w1360-h1020",
+// 			"https://lh3.googleusercontent.com/p/AF1QipMvfX6S-tVJiKrRLQk2YWxNfk18aferJMwb5sTG=s1360-w1360-h1020",
+// 			"https://lh3.googleusercontent.com/p/AF1QipOhWTgNXSOlCa2l5LmWehZmYN9Mgue92OBaV4RH=s1360-w1360-h1020",
+// 		],
+// 	},
+// ];
 
 const OurStores = () => {
-	const { tenantData: { response: { vendorIdentifier } = {} } = {} } = useContext(TenantContext);
+	const { tenantData: { response: { vendorIdentifier } = {} } = {} } = useContext(TenantContext);	
 
-	const [apiStores, setStores] = useState([]);
+	const [stores, setStores] = useState([]);
 
   // Fetch stores based on vendorIdentifier
   useEffect(() => {
@@ -61,10 +61,11 @@ const OurStores = () => {
       if (!vendorIdentifier) return; // null-safe check
 
       try {
-        const res = await fetch(BASE_URL_API + "/getStores", {
+        const res = await fetch(BASE_URL_API + "/getAllStores", {
           method: "POST",
           body: JSON.stringify({ vendorIdentifier }),
         });
+		
 
         if (!res.ok) {
           console.error("Failed to fetch stores");
@@ -85,6 +86,10 @@ const OurStores = () => {
 
     fetchStores();
   }, [vendorIdentifier]); // runs whenever vendorIdentifier changes
+
+  console.log(stores, "stores");
+  
+  
 
 	useEffect(() => {
 		const metaThemeColor = document.querySelector(
@@ -120,7 +125,7 @@ const OurStores = () => {
 			{/* Stores Grid */}
 			<div className="px-6 lg:px-8 xl:px-10 py-8 grid gap-6 sm:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 max-w-[1400px] mx-auto">
 				{stores.map((store) => (
-					<EachStore key={store.id} {...store} />
+					<EachStore key={store.storeIdentifier} {...store} />
 				))}
 			</div>
 		</div>

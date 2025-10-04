@@ -1,254 +1,177 @@
-// // import React from "react";
-// // import { motion } from "framer-motion";
-// // import { FiMessageSquare } from "react-icons/fi";
+import React, { useState, useEffect, useCallback } from "react";
+import { FaQuoteLeft, FaStar } from "react-icons/fa";
 
-// // const containerVariants = {
-// // 	hidden: { opacity: 0 },
-// // 	show: {
-// // 		opacity: 1,
-// // 		transition: { staggerChildren: 0.1, delayChildren: 0.3 },
-// // 	},
-// // };
-// // const itemVariants = {
-// // 	hidden: { y: 30, opacity: 0 },
-// // 	show: {
-// // 		y: 0,
-// // 		opacity: 1,
-// // 		transition: { type: "spring", stiffness: 100, damping: 10 },
-// // 	},
-// // };
-// // const testimonials = [
-// // 	{
-// // 		name: "Sophia Miller",
-// // 		role: "Regular Client",
-// // 		feedback:
-// // 			"The best salon experience I’ve ever had. My hair has never looked this good!",
-// // 		avatar: "https://i.pravatar.cc/100?img=15",
-// // 	},
-// // 	{
-// // 		name: "Emma Wilson",
-// // 		role: "Bride-to-be",
-// // 		feedback:
-// // 			"They did my bridal makeup and it was flawless. Highly recommend!",
-// // 		avatar: "https://i.pravatar.cc/100?img=17",
-// // 	},
-// // 	{
-// // 		name: "Olivia Brown",
-// // 		role: "Spa Lover",
-// // 		feedback:
-// // 			"The spa session was so relaxing. I felt completely rejuvenated!",
-// // 		avatar: "https://i.pravatar.cc/100?img=19",
-// // 	},
-// // ];
-
-// // const Testimonials = () => {
-// // 	return (
-// // 		<section className="max-w-6xl mx-auto px-6 py-16">
-// // 			<h2 className="text-center text-4xl font-extrabold mb-12 relative text-black after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1.5 after:bg-blue-800 after:rounded-full">
-// // 				What Our Clients Say
-// // 			</h2>
-// // 			<motion.div
-// // 				className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
-// // 				variants={containerVariants}
-// // 				initial="hidden"
-// // 				whileInView="show"
-// // 				viewport={{ once: true, amount: 0.3 }}
-// // 			>
-// // 				{testimonials.map((t, i) => (
-// // 					<motion.div
-// // 						key={i}
-// // 						className="bg-white p-8 rounded-2xl text-center shadow-md border border-gray-200"
-// // 						variants={itemVariants}
-// // 					>
-// // 						<FiMessageSquare
-// // 							size={40}
-// // 							className="mx-auto mb-4 text-blue-800"
-// // 						/>
-// // 						<p className="italic text-black mb-4">{t.feedback}</p>
-// // 						<img
-// // 							src={t.avatar}
-// // 							alt={t.name}
-// // 							className="w-20 h-20 rounded-full border-4 border-blue-400 mx-auto mb-3 shadow-md"
-// // 						/>
-// // 						<h4 className="text-lg font-semibold">{t.name}</h4>
-// // 						<span className="text-gray-500 text-sm">{t.role}</span>
-// // 					</motion.div>
-// // 				))}
-// // 			</motion.div>
-// // 		</section>
-// // 	);
-// // };
-
-// // export default Testimonials;
-
-// import React from "react";
-// import { motion } from "framer-motion";
-// import { FiMessageSquare } from "react-icons/fi";
-
-// const containerVariants = {
-//   hidden: { opacity: 0 },
-//   show: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.3 } },
-// };
-
-// const itemVariants = {
-//   hidden: { y: 30, opacity: 0 },
-//   show: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100, damping: 10 } },
-// };
-
-// const defaultTestimonials = [
-//   {
-//     name: "Sophia Miller",
-//     role: "Regular Client",
-//     feedback: "The best salon experience I’ve ever had. My hair has never looked this good!",
-//     avatar: "https://i.pravatar.cc/100?img=15",
-//   },
-//   {
-//     name: "Emma Wilson",
-//     role: "Bride-to-be",
-//     feedback: "They did my bridal makeup and it was flawless. Highly recommend!",
-//     avatar: "https://i.pravatar.cc/100?img=17",
-//   },
-//   {
-//     name: "Olivia Brown",
-//     role: "Spa Lover",
-//     feedback: "The spa session was so relaxing. I felt completely rejuvenated!",
-//     avatar: "https://i.pravatar.cc/100?img=19",
-//   },
-// ];
-
-// const Testimonials = ({ data }) => {
-//   const testimonials = data?.length ? data : defaultTestimonials;
-
-//   return (
-//     <section className="max-w-6xl mx-auto px-6 py-16">
-//       <h2 className="text-center text-4xl font-extrabold mb-12 relative text-black after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 after:-translate-x-1/2 after:w-20 after:h-1.5 after:bg-blue-800 after:rounded-full">
-//         What Our Clients Say
-//       </h2>
-
-//       <motion.div
-//         className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
-//         variants={containerVariants}
-//         initial="hidden"
-//         whileInView="show"
-//         viewport={{ once: true, amount: 0.3 }}
-//       >
-//         {testimonials.map((t, i) => (
-//           <motion.div
-//             key={i}
-//             className="bg-white p-8 rounded-2xl text-center shadow-md border border-gray-200"
-//             variants={itemVariants}
-//           >
-//             <FiMessageSquare size={40} className="mx-auto mb-4 text-blue-800" />
-//             <p className="italic text-black mb-4">{t.feedback || "Client feedback goes here."}</p>
-//             <img
-//               src={t.avatar || "https://i.pravatar.cc/100?img=1"}
-//               alt={t.name || "Client"}
-//               className="w-20 h-20 rounded-full border-4 border-blue-400 mx-auto mb-3 shadow-md"
-//             />
-//             <h4 className="text-lg font-semibold">{t.name || "Anonymous"}</h4>
-//             <span className="text-gray-500 text-sm">{t.role || "Client"}</span>
-//           </motion.div>
-//         ))}
-//       </motion.div>
-//     </section>
-//   );
-// };
-
-// export default Testimonials;
-
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { FiChevronDown } from "react-icons/fi";
-
-// ✅ Default FAQs
-const defaultFaqs = [
-  {
-    q: "Do I need to book an appointment in advance?",
-    a: "Yes, we recommend booking in advance to ensure availability, especially on weekends.",
-  },
-  {
-    q: "Which hair color brands do you use?",
-    a: "We use premium, ammonia-free products from L’Oréal and Wella for safe, lasting results.",
-  },
-  {
-    q: "Do you offer bridal packages?",
-    a: "Yes! We have customized bridal packages including hair, makeup, and pre-wedding treatments.",
-  },
-  {
-    q: "Is home service available?",
-    a: "Currently, we provide in-salon services only. Home service will be available soon.",
-  },
+// ✅ Static fallback data
+const defaultTestimonials = [
+	{
+		id: 1,
+		clientName: "Jane Doe",
+		role: "Regular Client",
+		text: "I've been coming here for years, and the service is always exceptional. The staff is friendly, and the quality of work is unmatched!",
+		rating: 5,
+		photoUrl:
+			"https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80",
+	},
+	{
+		id: 2,
+		clientName: "John Smith",
+		role: "First-time Visitor",
+		text: "Absolutely loved my haircut! The stylist really listened to what I wanted and gave me a perfect look. I will definitely be back!",
+		rating: 5,
+		photoUrl:
+			"https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80",
+	},
+	{
+		id: 3,
+		clientName: "Emily White",
+		role: "Bridal Party",
+		text: "The salon did an amazing job with my bridal hair and makeup. Everything was flawless, and they made me feel so special on my big day.",
+		rating: 5,
+		photoUrl:
+			"https://images.unsplash.com/photo-1494790108377-be9c29b29329?auto=format&fit=crop&w=600&q=80",
+	},
+	{
+		id: 4,
+		clientName: "Michael Brown",
+		role: "Barbering Client",
+		text: "Best beard trim I've ever gotten. The attention to detail is fantastic, and the hot towel shave was so relaxing. Highly recommend!",
+		rating: 4,
+		photoUrl:
+			"https://images.unsplash.com/photo-1557862921-37829c790f19?auto=format&fit=crop&w=600&q=80",
+	},
+	{
+		id: 5,
+		clientName: "Olivia Wilson",
+		role: "Hair Color Client",
+		text: "My new hair color is perfect! The stylist was so knowledgeable and helped me choose the perfect shade. The results are amazing.",
+		rating: 5,
+		photoUrl:
+			"https://images.unsplash.com/photo-1567532939604-8f762a15328b?auto=format&fit=crop&w=600&q=80",
+	},
 ];
 
-// ✅ Framer Motion Variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.3 } },
+// Render stars
+const renderStars = (rating) =>
+	[...Array(5)].map((_, i) => (
+		<FaStar
+			key={i}
+			className={`text-lg ${
+				i < rating ? "text-yellow-400" : "text-gray-300"
+			}`}
+		/>
+	));
+
+const Testimonials = ({ testimonialsData }) => {
+	const testimonials = testimonialsData?.length
+		? testimonialsData
+		: defaultTestimonials;
+
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const [isMobile, setIsMobile] = useState(false);
+
+	useEffect(() => {
+		const checkScreen = () => setIsMobile(window.innerWidth < 768);
+		checkScreen();
+		window.addEventListener("resize", checkScreen);
+		return () => window.removeEventListener("resize", checkScreen);
+	}, []);
+
+	const cardsVisible = isMobile ? 1 : 2;
+	const maxIndex = Math.max(0, testimonials.length - cardsVisible);
+
+	const nextSlide = useCallback(() => {
+		setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+	}, [maxIndex]);
+
+	const goToSlide = (index) => setCurrentIndex(Math.min(index, maxIndex));
+
+	useEffect(() => {
+		const interval = setInterval(nextSlide, 5000);
+		return () => clearInterval(interval);
+	}, [nextSlide]);
+
+	if (!testimonials.length) return null;
+
+	return (
+		<section id="testimonials" className="py-20 bg-gray-100">
+			<div className="max-w-7xl mx-auto px-4">
+				{/* Header */}
+				<div className="text-center mb-16">
+					<h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+						Happy Clients, Happy Us
+					</h2>
+					<p className="text-lg text-gray-600 max-w-2xl mx-auto">
+						Do not just take our word for it, hear from our
+						satisfied customers
+					</p>
+				</div>
+
+				{/* Carousel */}
+				<div className="relative overflow-hidden rounded-3xl py-4">
+					<div
+						className="flex transition-transform duration-500 ease-in-out gap-6"
+						style={{
+							transform: `translateX(calc(-${currentIndex} * (100% / ${cardsVisible}) - ${currentIndex} * 0.8rem))`,
+						}}
+					>
+						{testimonials.map((t) => (
+							<div
+								key={t.id}
+								className="flex-shrink-0 w-full md:w-[calc(50%-0.75rem)]"
+							>
+								<div className="bg-white border border-gray-200 rounded-3xl p-8 relative flex flex-col justify-between h-full transition-transform hover:-translate-y-2">
+									<div className="absolute top-4 left-4 text-3xl text-gray-900 opacity-15">
+										<FaQuoteLeft />
+									</div>
+									<p className="text-gray-700 italic text-lg leading-relaxed mb-6 pl-6 flex-grow">
+										{t.text || "No testimonial provided."}
+									</p>
+									<div className="flex items-center">
+										<div className="w-16 h-16 rounded-full overflow-hidden shadow mr-4">
+											<img
+												src={
+													t.photoUrl ||
+													"https://via.placeholder.com/150"
+												}
+												alt={t.clientName || "Client"}
+												className="w-full h-full object-cover"
+											/>
+										</div>
+										<div>
+											<h4 className="font-bold text-gray-800 text-lg">
+												{t.clientName || "Anonymous"}
+											</h4>
+											<p className="text-sm text-gray-500">
+												{t.role || "Client"}
+											</p>
+											<div className="flex gap-1 mt-1">
+												{renderStars(t.rating || 0)}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+
+				{/* Dots */}
+				<div className="flex justify-center mt-8 gap-2">
+					{Array.from({ length: maxIndex + 1 }).map((_, index) => (
+						<button
+							key={index}
+							onClick={() => goToSlide(index)}
+							className={`h-3 rounded-full transition-all ${
+								index === currentIndex
+									? "w-8 bg-gray-900"
+									: "w-3 bg-gray-300 hover:bg-gray-400"
+							}`}
+						/>
+					))}
+				</div>
+			</div>
+		</section>
+	);
 };
-const itemVariants = {
-  hidden: { y: 30, opacity: 0 },
-  show: { y: 0, opacity: 1, transition: { type: "spring", stiffness: 100, damping: 10 } },
-};
 
-const FAQs = ({ data }) => {
-  const faqs = data?.length ? data : defaultFaqs;
-  const [openFaq, setOpenFaq] = useState(null);
-
-  return (
-    <section className="max-w-3xl mx-auto px-6 py-16">
-      <h2 className="text-center text-4xl font-extrabold mb-12 relative text-black 
-        after:content-[''] after:absolute after:bottom-[-10px] after:left-1/2 
-        after:-translate-x-1/2 after:w-20 after:h-1.5 after:bg-blue-800 after:rounded-full"
-      >
-        Frequently Asked Questions
-      </h2>
-
-      <motion.div
-        className="space-y-6"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        {faqs.map((faq, i) => (
-          <motion.div
-            key={i}
-            className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm"
-            variants={itemVariants}
-          >
-            <div
-              className="flex justify-between items-center cursor-pointer text-lg font-semibold text-black"
-              onClick={() => setOpenFaq(openFaq === i ? null : i)}
-            >
-              <span>{faq.q || "FAQ Question"}</span>
-              <motion.div
-                className="w-6 h-6"
-                animate={{ rotate: openFaq === i ? 180 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <FiChevronDown />
-              </motion.div>
-            </div>
-
-            <AnimatePresence>
-              {openFaq === i && (
-                <motion.div
-                  className="pt-4 text-gray-600"
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <p>{faq.a || "Answer goes here."}</p>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        ))}
-      </motion.div>
-    </section>
-  );
-};
-
-export default FAQs;
-
+export default Testimonials;

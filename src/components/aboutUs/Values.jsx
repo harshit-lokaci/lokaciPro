@@ -199,11 +199,11 @@ const Values = ({ data, staggerContainer, staggerItem }) => {
           {valuesData.cards.map((card, idx) => (
             <motion.div
               key={idx}
-              className="relative p-10 rounded-2xl text-center border border-[#e9ecef] overflow-hidden bg-white/90 shadow-[0_4px_15px_rgba(0,0,0,0.05)] group"
+              className="relative flex items-center flex-col p-10 rounded-2xl border border-[#e9ecef] overflow-hidden bg-white/90 shadow-[0_4px_15px_rgba(0,0,0,0.05)] group"
               variants={staggerItem}
               whileHover={{ y: -10, scale: 1.02 }}
             >
-              <div className="absolute -top-12 -left-12 w-24 h-24 bg-[#164374] rounded-full filter blur-2xl opacity-10 group-hover:scale-[3] transition-transform duration-500 ease-in-out"></div>
+              {/* <div className="absolute -top-12 -left-12 w-24 h-24 bg-[#164374] rounded-full filter blur-2xl opacity-10 group-hover:scale-[3] transition-transform duration-500 ease-in-out"></div> */}
 
               <motion.div className="text-5xl mb-6 relative z-10">{card.icon}</motion.div>
               <h3 className="text-2xl font-semibold mb-4 relative z-10 text-[#212529]">

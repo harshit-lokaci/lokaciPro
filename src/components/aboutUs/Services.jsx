@@ -160,7 +160,7 @@ const Services = ({ data, activeService, setActiveService }) => {
           {servicesData.items.map((service, idx) => (
             <motion.div
               key={idx}
-              className={`w-full max-w-[400px] min-h-[200px] p-8 rounded-xl text-center cursor-pointer border-2 transition-all duration-400 ease-in-out text-[#212529] group ${
+              className={`w-full flex flex-col items-center max-w-[400px] min-h-[200px] p-8 rounded-xl text-center cursor-pointer border-2 transition-all duration-400 ease-in-out text-[#212529] group ${
                 activeService === idx
                   ? "bg-[#164374] border-[#164374] text-white -translate-y-2.5"
                   : "bg-transparent border-[#e9ecef] hover:bg-[#164374] hover:border-[#164374] hover:-translate-y-2.5"

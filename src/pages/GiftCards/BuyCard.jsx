@@ -39,16 +39,17 @@ const BuyCard = () => {
 	};
 
 	const getEachCardDetails = async () => {
-		const response = await fetch(BASE_URL_API + "/getEachCardDetails", {
+		const response = await fetch(BASE_URL_API + "/getEachMembershipDetails", {
 			method: "POST",
 			body: JSON.stringify({
-				token: authCtx.token,
-				cardIdentifier: identifier,
+				// token: authCtx.token,
+				membershipIdentifier: identifier,
 			}),
 		});
 
 		if (response.ok) {
 			const data = await response.json();
+			console.log(data,"data");
 			if (data.status === "success") {
 				setCardDetails(data?.response);
 			} else {
@@ -123,7 +124,7 @@ const BuyCard = () => {
 					<BiChevronLeft size={28} />
 				</Link>
 				<div className="text-lg font-semibold flex-1 text-center mr-10">
-					{cardDetails?.label}
+					{cardDetails?.name}
 				</div>
 			</div>
 
@@ -147,16 +148,16 @@ const BuyCard = () => {
 						{cardDetails?.description}
 					</p>
 					<ul className="list-disc pl-5 text-gray-600 text-sm space-y-1">
-						{JSON.parse(cardDetails?.terms)?.map((item, idx) => (
+						{/* {JSON.parse(cardDetails?.terms)?.map((item, idx) => (
 							<li key={idx}>{item}</li>
-						))}
+						))} */}
 					</ul>
 					<div className="flex items-center justify-between mt-3">
 						<p className="text-2xl font-bold text-gray-900">
-							₹{getTotalPrice(cardDetails?.toPay)}
+							₹{getTotalPrice(cardDetails?.membershipPrice)}
 						</p>
 						<p className="text-sm line-through text-gray-400">
-							₹{cardDetails?.worthOff}
+							₹{cardDetails?.membershipWorthOff}
 						</p>
 					</div>
 					{paymentMessage && (
@@ -171,7 +172,7 @@ const BuyCard = () => {
 					<h2 className="text-sm font-semibold text-gray-700 mb-3">
 						Available At
 					</h2>
-					<div className="grid gap-4">
+					<div className="grid grid-cols-2 gap-4">
 						{[
 							{
 								name: "The Salon Company",

@@ -8,6 +8,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { BiLoaderAlt } from "react-icons/bi";
 import CustomOTPInput from "../components/other/CustomOtpInput.jsx";
 import { theme } from "../theme.js";
+import TenantContext from "../store/tenantContext";
 
 const Login = () => {
 	const { colors } = theme;
@@ -17,6 +18,7 @@ const Login = () => {
 	const [phone, setPhone] = useState("");
 	const [otp, setOtp] = useState("");
 	const [countryCode, setCountryCode] = useState("+91");
+	const { tenantData: { response: { storeIdentifier } = {} } = {} } = useContext(TenantContext);
 
 	// const searchParams = new URLSearchParams(window.location.search);
 	const nav = useNavigate();
@@ -50,6 +52,7 @@ const Login = () => {
 	};
 
 	const sendOtp = async (n) => {
+		console.log(storeIdentifier,"storeIdentifier");
 		if (n !== "undefined") {
 			setOtpSendStatus("SENDING");
 			const sendOtpResponse = await fetch(BASE_URL_API + `/auth`, {
@@ -59,6 +62,7 @@ const Login = () => {
 					phone: n,
 					requestCount: requestCount,
 					sessionKey: sessionKey,
+					storeIdentifier
 				}),
 			});
 
@@ -95,6 +99,7 @@ const Login = () => {
 				sessionKey: sessionKey,
 				otpEntered: k,
 				phone: otpSentOn,
+				storeIdentifier 
 			}),
 		});
 
@@ -160,7 +165,7 @@ const Login = () => {
 							</div>
 
 							<button
-								className={`w-full mt-4 bg-[#${colors.bgPrimary}]  text-white font-semibold py-3 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition`}
+								className={`w-full mt-4 bg-gray-300  text-black font-semibold py-3 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition`}
 								onClick={() => sendOtpHandler(true, phone)}
 							>
 								{otpSendStatus === "SENDING" ? (

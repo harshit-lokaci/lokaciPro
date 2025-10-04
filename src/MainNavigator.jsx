@@ -39,7 +39,7 @@ const MainNavigator = () => {
 				<Route path="/gallery" element={<Gallery />} />
 				<Route path="/contact-us" element={<ContactUs />} />
 				<Route
-					path="/:storeIdentifier/price-list"
+					path="/price-list"
 					element={<PriceList />}
 				/>
 				<Route path="/stores" element={<OurStores />} />
