@@ -4,20 +4,20 @@ import { ToastContainer } from "react-toastify";
 import Navbar from "./components/layout/Navbar.jsx";
 import { useContext } from "react";
 import AuthContext from "./store/authContext.jsx";
-import ProfileUpdatePopup from "./components/layout/ProfileUpdatePopup.jsx"; // Import the popup
+// import ProfileUpdatePopup from "./components/layout/ProfileUpdatePopup.jsx"; // Import the popup
 
 const Layout = () => {
     const location = useLocation();
     const authCtx = useContext(AuthContext);
 
     // Determine if the popup should be shown
-    const showProfilePopup = authCtx.isLoggedIn && !authCtx.isProfileUpdated;
+    // const showProfilePopup = authCtx.isLoggedIn && !authCtx.isProfileUpdated;
 
-    const handlePopupClose = () => {
-        // The popup's internal logic now handles updating the context,
-        // so this can simply be an empty function or used for other logic if needed.
-        // The re-render triggered by the context update will hide the popup.
-    };
+    // const handlePopupClose = () => {
+    //     // The popup's internal logic now handles updating the context,
+    //     // so this can simply be an empty function or used for other logic if needed.
+    //     // The re-render triggered by the context update will hide the popup.
+    // };
 
     // Don't show header/footer on /login
     const hideHeaderFooter = location.pathname === "/login";
