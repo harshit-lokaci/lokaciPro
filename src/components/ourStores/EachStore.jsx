@@ -24,34 +24,40 @@ const EachStore = ({ storeName, storeAddress, storePhone, images, storeLat, stor
 		<div className="bg-white rounded-xl overflow-hidden shadow-md flex flex-col transition-transform duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg">
 			{/* Image Slider */}
 			<div className="relative">
-				<button
-					className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/50 text-white p-1.5 rounded-full flex items-center justify-center z-10 hover:bg-black/70"
-					onClick={() => scroll("left")}
-				>
-					<FiChevronLeft size={22} />
-				</button>
+			{/* Left Scroll Button */}
+			<button
+				className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black/50 text-white p-1.5 rounded-full flex items-center justify-center z-10 hover:bg-black/70"
+				onClick={() => scroll("left")}
+			>
+				<FiChevronLeft size={22} />
+			</button>
 
-				<div
-					ref={sliderRef}
-					className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none"
-				>
-					{images.map((image, index) => (
-						<img
-							key={index}
-							src={image}
-							alt={`${storeName} slide ${index + 1}`}
-							className="w-full h-60 sm:h-56 lg:h-64 object-cover flex-shrink-0 snap-start transition-transform duration-300 ease-in-out hover:scale-105"
-						/>
-					))}
+			{/* Image Slider */}
+			<div
+				ref={sliderRef}
+				className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none"
+			>
+				{(images && images.length ? images : [null]).map((image, index) => (
+				<img
+					key={index}
+					src={image || "/assets/fallbackImage.jpg"}
+					alt={`${storeName} slide ${index + 1}`}
+					className="w-full h-60 sm:h-56 lg:h-64 object-cover flex-shrink-0 snap-start transition-transform duration-300 ease-in-out hover:scale-105"
+					onError={(e) => { e.currentTarget.src = "/assets/fallbackImage.jpg"; }}
+				/>
+				))}
+
 				</div>
 
+				{/* Right Scroll Button */}
 				<button
 					className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black/50 text-white p-1.5 rounded-full flex items-center justify-center z-10 hover:bg-black/70"
 					onClick={() => scroll("right")}
 				>
 					<FiChevronRight size={22} />
 				</button>
-			</div>
+				</div>
+
 
 			{/* Store Details */}
 			<div className="p-4 flex flex-col flex-1 justify-between">
@@ -64,7 +70,6 @@ const EachStore = ({ storeName, storeAddress, storePhone, images, storeLat, stor
 					</p>
 				</div>
 
-				{/* Action Buttons */}
 				{/* Action Buttons */}
 				<div className="flex flex-col sm:grid sm:grid-cols-2 lg:flex lg:flex-row gap-3 mt-3">
 					<a

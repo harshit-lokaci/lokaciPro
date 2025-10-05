@@ -91,7 +91,7 @@ const Services = ({ servicesData }) => {
 				{/* Heading */}
 				<div className="text-center mb-12">
 					<h2 className="text-4xl font-extrabold text-black mb-4">
-						Our Services
+						Pamper Yourself With Our Service
 					</h2>
 					<p className="text-lg text-gray-600 max-w-2xl mx-auto">
 						Experience our premium beauty services designed to

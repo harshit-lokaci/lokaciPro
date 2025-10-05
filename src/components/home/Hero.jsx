@@ -57,7 +57,7 @@ const Hero = () => {
 	return (
 		<section
 			id="home"
-			className="relative flex items-center justify-center min-h-[calc(100vh-8rem)] overflow-hidden"
+			className="relative flex items-center justify-center min-h-[calc(100vh-6rem)] overflow-hidden"
 		>
 			{/* Blurred Placeholder */}
 			<div

@@ -1,7 +1,6 @@
-// CustomOTPInput.jsx
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, forwardRef } from "react";
 
-const CustomOTPInput = ({ length = 6, onChange }) => {
+const CustomOTPInput = forwardRef(({ length = 6, onChange }, otpInputRef) => {
   const [otpValues, setOtpValues] = useState(Array(length).fill(""));
   const inputsRef = useRef([]);
 
@@ -27,6 +26,13 @@ const CustomOTPInput = ({ length = 6, onChange }) => {
     }
   };
 
+  useEffect(() => {
+    // Focus the first input on mount if ref is provided
+    if (otpInputRef?.current) {
+      otpInputRef.current.focus();
+    }
+  }, [otpInputRef]);
+
   return (
     <div className="flex justify-center gap-3 my-5">
       {otpValues.map((val, i) => (
@@ -37,12 +43,15 @@ const CustomOTPInput = ({ length = 6, onChange }) => {
           value={val}
           onChange={(e) => handleChange(e, i)}
           onKeyDown={(e) => handleKeyDown(e, i)}
-          ref={(el) => (inputsRef.current[i] = el)}
+          ref={(el) => {
+            inputsRef.current[i] = el;
+            if (i === 0 && otpInputRef) otpInputRef.current = el; // attach first input to parent ref
+          }}
           className="w-12 h-12 text-center text-2xl border-2 border-gray-300 rounded-lg outline-none transition-all duration-200 focus:border-black-600 focus:ring-2 focus:ring-black-500"
         />
       ))}
     </div>
   );
-};
+});
 
 export default CustomOTPInput;

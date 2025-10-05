@@ -148,7 +148,7 @@ const GiftCards = () => {
 							<div
 								className="relative h-[120px] bg-cover bg-center sm:h-[140px] md:h-[210px]"
 								style={{
-									backgroundImage: `url(${item.coverImage})`,
+									backgroundImage: `url(${item.coverImage? item.coverImage : "/assets/fallbackImage.jpg"})`,
 								}}
 							>
 								{/* .overlay */}

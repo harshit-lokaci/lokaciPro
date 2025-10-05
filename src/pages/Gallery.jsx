@@ -183,13 +183,18 @@ const Gallery = () => {
                 <div className="absolute inset-0 bg-gray-300 animate-pulse" />
               )}
               <img
-                src={image.src}
+                src={image.src || "/assets/fallbackImage.jpg"}
                 alt={image.alt}
                 className={`w-full h-full object-cover transition-opacity duration-500 ${
                   !imageLoadingStatus[image.id] ? "hidden" : "block"
                 }`}
                 onLoad={() => handleImageLoad(image.id)}
-              />
+                onError={(e) => {
+                  e.currentTarget.src = "/assets/fallbackImage.jpg";
+                  handleImageLoad(image.id);
+                }}
+                />
+
             </div>
           ))}
         </main>

@@ -24,8 +24,7 @@ const BuyCard = () => {
 		toPay: "1099",
 		worthOff: "2250",
 		terms: '["Limited for one person use only."]',
-		coverImage:
-			"https://ltsc.lokaci.com/visual-assets/giftcards/gallant-front.png",
+		// coverImage:"https://ltsc.lokaci.com/visual-assets/giftcards/gallant-front.png",
 		duration: "365",
 		isShareable: "0",
 	});
@@ -135,7 +134,7 @@ const BuyCard = () => {
 					<div className="w-full h-48 bg-gradient-to-br from-[#164374] to-[#306390] hidden md:block" />
 					<div className="absolute top-10 left-1/2 -translate-x-1/2 w-[100%] max-w-lg bg-white shadow-xl rounded-xl overflow-hidden">
 						<img
-							src={cardDetails?.coverImage}
+							src={cardDetails?.coverImage || "/assets/fallbackImage.jpg"}
 							alt="Gift Card"
 							className="w-full object-cover"
 						/>
