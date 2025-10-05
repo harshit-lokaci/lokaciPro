@@ -57,7 +57,7 @@
 
 
 import { createContext, useState, useEffect } from "react";
-import { getSubdomain } from "../Helper/getSubdomain";
+import { getSubdomain } from "../helper/getSubdomain";
 import { BASE_URL_API } from "../constants";
 
 const TenantContext = createContext({
